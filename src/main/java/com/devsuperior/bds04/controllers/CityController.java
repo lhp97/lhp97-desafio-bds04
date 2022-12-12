@@ -11,6 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/cities")
@@ -28,8 +29,8 @@ public class CityController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<CityDTO>> findAllCities(Pageable pageable) {
-        Page<CityDTO> cities = cityService.findAllCities(pageable);
+    public ResponseEntity<List<CityDTO>> findAllCities() {
+        List<CityDTO> cities = cityService.findAllCities();
         return ResponseEntity.ok().body(cities);
     }
 
